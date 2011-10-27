@@ -8,7 +8,6 @@ class CanaryNotifier
   def call(env)
     @app.call(env)
   rescue Exception => e
-    puts "CANARY!!!"    
     url = 'http://stark:abc123@bugdrop.canary.io/notify'
     first_line = e.backtrace.first
     (file_name, line_number, method) = first_line.split(':')
@@ -31,6 +30,7 @@ class CanaryNotifier
     data["code_sample"] = lines[start_line..end_line].join
 
     data["code_sample_line_start"] = line_number.to_i - 3
+    data["code_sample_line_start"] = 1 if data["code_sample_line_start"] < 1
     RestClient.post url,  data.to_json
  
     raise e
