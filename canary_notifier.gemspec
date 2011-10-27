@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'canary_notifier'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.authors = ["Henry Scudder"]
   s.date = %q{2011-10-27}
   s.summary = "Exception notification to Canary for Rails apps"
