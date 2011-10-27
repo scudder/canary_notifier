@@ -20,8 +20,16 @@ class CanaryNotifier
     data["line_number"] = line_number.to_i
     data["bug_method"] = method.split.last
     data["language"] = 'ruby'
-    data["backtrace"] = e.backtrace.join("\n\t")
-    data["code_sample"] = File.readlines(file_name)[line_number.to_i - 4..line_number.to_i+2].join
+    data["backtrace"] = e.backtrace.join("\n")
+
+    lines = File.readlines(file_name)
+    start_line = line_number.to_i - 4
+    start_line = 0 if start_line < 0
+    end_line = line_number.to_i+2
+    end_line = line.size - 1 if end_line > line.size - 1
+
+    data["code_sample"] = lines[start_line..end_line].join
+
     data["code_sample_line_start"] = line_number.to_i - 3
     RestClient.post url,  data.to_json
  
