@@ -7,7 +7,7 @@ class CanaryNotifier
 
   def call(env)
     @app.call(env)
-  rescue Exception => exception
+  rescue Exception => e
     puts "CANARY!!!"    
     url = 'http://stark:abc123@bugdrop.canary.io/notify'
     first_line = e.backtrace.first
@@ -25,6 +25,6 @@ class CanaryNotifier
     data["code_sample_line_start"] = line_number.to_i - 3
     RestClient.post url,  data.to_json
  
-    raise exception
+    raise e
   end
 end
