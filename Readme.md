@@ -9,6 +9,8 @@ Add this to your Gemfile:
 gem 'canary_notifier' , '~> 0.0.9'
 ```
 
+Do a `bundle install`.
+
 Open up config/environments/development.rb and add this do the end of the configure block:
 
 ```ruby
