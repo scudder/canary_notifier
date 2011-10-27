@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name = 'canary_noitifer'
+  s.name = 'canary_notifier'
   s.version = '0.0.1'
   s.authors = ["Henry Scudder"]
   s.date = %q{2011-10-27}
