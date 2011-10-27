@@ -26,7 +26,7 @@ class CanaryNotifier
     start_line = line_number.to_i - 4
     start_line = 0 if start_line < 0
     end_line = line_number.to_i+2
-    end_line = line.size - 1 if end_line > line.size - 1
+    end_line = lines.size - 1 if end_line > lines.size - 1
 
     data["code_sample"] = lines[start_line..end_line].join
 
