@@ -12,7 +12,7 @@ class CanaryNotifier
     first_line = e.backtrace.first
     (file_name, line_number, method) = first_line.split(':')
     data = {}
-    data["app_name"] = @options[:name] || "No Name"
+    data["app_name"] = @options[:app_name] || "No Name"
     data["bug_name"] = "#{e.class.name}: #{e.to_s}"
     data["bug_class"] = e.class.name
     data["file_name"] = file_name
