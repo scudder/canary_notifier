@@ -37,7 +37,7 @@ class CanaryNotifier
   end
 
   def parse_backtrace_line(line)
-    parts = first_line.split(':')
+    parts = line.split(':')
    
     # the backtrace will always parse funny on Windows due to paths containing things like 
     # 'c:\ruby\etc...'
