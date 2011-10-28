@@ -9,8 +9,8 @@ class CanaryNotifier
     @app.call(env)
   rescue Exception => e
     url = 'http://stark:abc123@bugdrop.canary.io/notify'
-    first_line = e.backtrace.first
-    (file_name, line_number, method) = first_line.split(':')
+    (file_name, line_number, method) = parse_backtrace_line(e.backtrace.first)
+
     data = {}
     data["app_name"] = @options[:app_name] || "No Name"
     data["bug_name"] = "#{e.class.name}: #{e.to_s}"
@@ -34,5 +34,20 @@ class CanaryNotifier
     RestClient.post url,  data.to_json
  
     raise e
+  end
+
+  def parse_backtrace_line(line)
+    parts = first_line.split(':')
+   
+    # the backtrace will always parse funny on Windows due to paths containing things like 
+    # 'c:\ruby\etc...'
+    if parts.size == 4
+      file = parts[0..1].join
+      line_num = parts[2]
+      method = parts[3]
+      [file, line_num, method] 
+    else
+      parts
+    end
   end
 end
