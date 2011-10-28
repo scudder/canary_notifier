@@ -6,7 +6,7 @@ A simple way to get your ruby errors into Canary.
 Add this to your Gemfile:
 
 ```ruby
-gem 'canary_notifier' , '~> 0.0.9'
+gem 'canary_notifier' , '~> 0.0.10'
 ```
 
 Do a `bundle install`.
