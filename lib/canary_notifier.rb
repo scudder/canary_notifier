@@ -9,7 +9,7 @@ class CanaryNotifier
     @app.call(env)
   rescue Exception => e
     url = 'http://stark:abc123@bugdrop.canary.io/notify'
-    (file_name, line_number, method) = parse_backtrace_line(e.backtrace.first)
+    (file_name, line_number, method) = parse_backtrace_line(find_our_backtrace_line(e.backtrace))
 
     data = {}
     data["app_name"] = @options[:app_name] || "No Name"
@@ -49,5 +49,9 @@ class CanaryNotifier
     else
       parts
     end
+  end
+
+  def find_our_backtrace_line(backtrace)
+    backtrace.first
   end
 end
