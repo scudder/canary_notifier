@@ -52,6 +52,8 @@ class CanaryNotifier
   end
 
   def find_our_backtrace_line(backtrace)
-    backtrace.first
+    backtrace.each do |l|
+      return l if !l.match(/gems/)
+    end
   end
 end
