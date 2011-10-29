@@ -42,7 +42,7 @@ class CanaryNotifier
     # the backtrace will always parse funny on Windows due to paths containing things like 
     # 'c:\ruby\etc...'
     if parts.size == 4
-      file = parts[0..1].join
+      file = parts[0..1].join(':')
       line_num = parts[2]
       method = parts[3]
       [file, line_num, method] 
