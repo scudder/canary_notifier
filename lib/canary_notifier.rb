@@ -8,7 +8,7 @@ class CanaryNotifier
   def call(env)
     @app.call(env)
   rescue Exception => e
-    url = 'http://stark:abc123@bugdrop.canary.io/notify'
+    url = 'http://stark:abc123@bugdrop.bugdrop.io/notify'
     (file_name, line_number, method) = parse_backtrace_line(find_our_backtrace_line(e.backtrace))
 
     data = {}
