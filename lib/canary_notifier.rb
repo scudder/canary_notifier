@@ -23,7 +23,7 @@ class CanaryNotifier
 
     env = {}
     env[:title] = 'Environment'
-    env[:body] = ENV.to_a
+    env[:body] = env.to_a
 
     data[:sections] << env
     data[:sections] << backtrace
