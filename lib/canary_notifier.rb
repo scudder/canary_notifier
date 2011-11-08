@@ -20,11 +20,13 @@ class CanaryNotifier
     backtrace[:title] = 'Backtrace'
     backtrace[:body] = e.backtrace.join("\n")
 
-    data[:sections] << backtrace
 
     env = {}
     env[:title] = 'Environment'
     env[:body] = ENV.to_a
+
+    data[:sections] << env
+    data[:sections] << backtrace
 
     RestClient.post url,  data.to_json
  
