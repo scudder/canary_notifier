@@ -25,7 +25,7 @@ class CanaryNotifier
     environ[:title] = 'Environment'
     environ[:body] = env.to_a
 
-    data[:sections] << environ
+    #data[:sections] << environ
     data[:sections] << backtrace
 
     RestClient.post url,  data.to_json
