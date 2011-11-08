@@ -1,3 +1,4 @@
+require 'json_pure'
 require 'rest_client'
 
 class CanaryNotifier

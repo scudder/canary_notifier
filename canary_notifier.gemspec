@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'canary_notifier'
-  s.version = '0.0.23'
+  s.version = '0.0.24'
   s.authors = ["Henry Scudder"]
   s.date = %q{2011-10-27}
   s.summary = "Exception notification to Canary for Rails apps"
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.add_dependency("rest-client")
+  s.add_dependency("json_pure")
 end
