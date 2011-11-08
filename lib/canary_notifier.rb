@@ -1,4 +1,4 @@
-require 'json/pure'
+require 'json/add/rails'
 require 'rest_client'
 
 class CanaryNotifier
