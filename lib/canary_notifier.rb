@@ -1,4 +1,3 @@
-require 'json/add/rails'
 require 'rest_client'
 
 class CanaryNotifier
@@ -27,7 +26,7 @@ class CanaryNotifier
     environ[:body] = env.to_a
 
     #data[:sections] << environ
-    puts environ.to_a.to_json
+    puts environ.to_a.map {|x| [x.first,x.last.to_s]}.to_json
     data[:sections] << backtrace
 
     RestClient.post url,  data.to_json
