@@ -8,22 +8,23 @@ class CanaryNotifier
   def call(env)
     @app.call(env)
   rescue Exception => e
-    url = 'http://stark:abc123@bugdrop.bugdrop.io/notify'
+    url = 'https://bugdrop-endpoint.herokuapp.com'
 
     data = {}
-    data["app"] = @options[:app_name] || "No Name"
+    data["app_key"] = "d2b88600-108b-012f-3d0a-109addaabe1a"
     data["title"] = "#{e.class.name}: #{e.to_s}"
 
     data[:sections] = []
 
     backtrace = {}
     backtrace[:title] = 'Backtrace'
-    backtrace[:body] = e.backtrace.join("\n")
-
+    backtrace[:type] = 'code'
+    backtrace[:content] = e.backtrace.join("\n")
 
     environ = {}
     environ[:title] = 'Environment'
-    environ[:body] = env.to_a.map {|x| [x.first,x.last.to_s]}
+    environ[:type] = 'table'
+    environ[:content] = env.to_a.map {|x| [x.first,x.last.to_s]}
 
     data[:sections] << environ
     data[:sections] << backtrace
