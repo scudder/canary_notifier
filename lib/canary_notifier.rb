@@ -11,7 +11,7 @@ class CanaryNotifier
     url = 'https://bugdrop-endpoint.herokuapp.com'
 
     data = {}
-    data["app_key"] = "d2b88600-108b-012f-3d0a-109addaabe1a"
+    data["app_key"] = @options[:app_key] 
     data["title"] = "#{e.class.name}: #{e.to_s}"
 
     data[:sections] = []
